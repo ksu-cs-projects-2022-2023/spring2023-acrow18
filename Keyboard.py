@@ -8,6 +8,7 @@ import random
 import pyowm
 import pyttsx3
 
+
 def Movement(option):
 #Used to get rid of any sort of punctuation
     def tokenizingInput(option):
