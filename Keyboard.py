@@ -39,13 +39,13 @@ def Movement(option):
         #    os.system('cmd /c "cd lnks && START {name}.lnk"'.format(name = _split[1])) #types in the command prompt START and the name of the file to open
 
 
-    #Used to open applications through CLI
+    #Used to open applications through CLI (not working yet)
     def openAppsThroughCLI(option):
         _split = tokenizingInput(option)
         if (_split[0] == "Open" or _split[0] == "open"):
             open(option, match_closest=True)
 
-    #Used to close applications through CLI
+    #Used to close applications through CLI (not working yet)
     def closeAppsThroughCLI(option):
         _split = tokenizingInput(option)
         if (_split[0] == "Close" or _split[0] == "close"):
