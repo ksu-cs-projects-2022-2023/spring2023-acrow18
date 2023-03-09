@@ -10,7 +10,9 @@ def main():
         text = VoiceIntake.request_file()
         with open("output.txt") as f:
             line = f.readline()
-            Keyboard.Movement(line)
+
+            #process the voice recording
+            Keyboard.tokenizingInput()
         wait(2)
 
                                             
