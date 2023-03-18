@@ -32,6 +32,8 @@ def tokenizingInput(option):
     _split = option.split(" ", 1)
     _completeSplit = option.split(" ")
 
+    return _completeSplit
+
     #return value
 
 #Used to open lnk files through the command prompt
@@ -139,6 +141,10 @@ def singleLetterKeyPresses(option):
             pydirectinput.press("y")
         elif(_split[1] == "z"):
             pydirectinput.press("z")
+
+
+def multipleKeypresses(option):
+
 
 #Used to captialize or lowercase letters
 def lowerOrUpper(option):
