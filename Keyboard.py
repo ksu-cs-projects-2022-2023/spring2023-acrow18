@@ -2,7 +2,6 @@ from AppOpener import open, close
 import pyautogui
 import pydirectinput
 
-
 class CleaningUpInput:
     # Used to get rid of any sort of punctuation
     def cleaningUpOption(option):
@@ -53,7 +52,7 @@ class KeyboardClass:
     def typingWords(option):
         _split = CleaningUpInput.CleaningUpOption.tokenizingInput(option)
 
-        if _split[0] == "type":
+        if _split[0] == "type.":
             pydirectinput.write(_split[1])
 
     # Common key presses

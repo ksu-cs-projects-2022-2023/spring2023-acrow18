@@ -18,9 +18,9 @@ class File:
                 yield data
 
     # Used to request the file
-    def request_file(self):
+    def request_file():
         upload_response = requests.post('https://api.assemblyai.com/v2/upload', headers=headers,
-                                        data=read_file('output.mp3'))
+                                        data=File.read_file('output.mp3'))
         audio_url = upload_response.json()["upload_url"]
         transcript_request = {'audio_url': audio_url}
         transcript_response = requests.post("https://api.assemblyai.com/v2/transcript", json=transcript_request,
@@ -45,7 +45,7 @@ class File:
 
 class VoiceInput:
     # Records voice from sound device
-    def record_voice(self):
+    def record_voice():
         fs = 44100  # Sample rate of the recording
         seconds = 5  # Duration of the recording
 

@@ -8,7 +8,7 @@ def main():
     while 1 == 1:
         print("Recording")
         VoiceIntake.VoiceInput.record_voice()
-        text = VoiceIntake.request_file()
+        text = VoiceIntake.File.request_file()
         with open("output.txt") as f:
             line = f.readline()
 
