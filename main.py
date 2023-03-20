@@ -12,7 +12,7 @@ def main():
             line = f.readline()
 
             #process the voice recording
-            Keyboard.tokenizingInput()
+            Keyboard.CleaningUpInput.cleaningUpOption(line)
         wait(2)
 
                                             
