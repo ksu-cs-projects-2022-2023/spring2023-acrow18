@@ -2,20 +2,20 @@ from AppOpener import open, close
 import pyautogui
 import pydirectinput
 
+
 class CleaningUpInput:
+
+    # used to assign values for option
+    def __init__(self, option):
+        self.option = option
+
     # Used to get rid of any sort of punctuation
-    def cleaningUpOption(option):
+    def cleaningUpOption(self):
 
-        if "." in option:
-            optionsplit = option.split(".", 1)
-
-            if optionsplit[0] == optionsplit[1]:
-                optionclean = optionsplit[0]
-            else:
-                optionclean = option.replace(".", "")
-        optionclean = option.replace("?", "")
-        optionclean = option.replace("!", "")
-        optionclean = option.replace(",", "")
+        optionclean = self.option.replace(".", "")
+        optionclean = self.option.replace("?", "")
+        optionclean = self.option.replace("!", "")
+        optionclean = self.option.replace(",", "")
 
         print(optionclean)
 
@@ -26,38 +26,56 @@ class CleaningUpInput:
         return optionlower
 
     # Used to split the option into tokens
-    def tokenizingInput(option):
+    def tokenizingInput(self):
 
-        option = CleaningUpInput.CleaningUpOption(option)
+        option = CleaningUpInput.CleaningUpOption(self.option)
+
+        if "." in option:
+            optionsplit = option.split(".", 1)
+            if optionsplit[0] == optionsplit[1]:
+                option = optionsplit[0]
+            else:
+                option = option.replace(".", "")
+        option = option.replace("?", "")
+        option = option.replace(",", "")
+
+        print(option)
+
+        option = option.lower()
+
+        print(option)
 
         _split = option.split(" ", 1)
-        _completeSplit = option.split(" ")
+        _completerSplit = option.split(" ")
 
-        return _completeSplit
 
 class KeyboardClass:
+
+    def __init__(self, option):
+        self.option = option
+
     # Used to open applications through CLI (not working yet)
-    def openAppsThroughCLI(option):
-        if "open" in option:
-            app_name = option.replace("open ", "").strip()
+    def openAppsThroughCLI(self):
+        if "open" in self.option:
+            app_name = self.option.replace("open ", "").strip()
             open(app_name, match_closest=True)
 
     # Used to close applications through CLI (not working yet)
-    def closeAppsThroughCLI(option):
-        if "close" in option:
-            app_name = option.replace("close ", "").strip()
+    def closeAppsThroughCLI(self):
+        if "close" in self.option:
+            app_name = self.option.replace("close ", "").strip()
             close(app_name, match_closest=True, output=False)
 
     # Used to type words
-    def typingWords(option):
-        _split = CleaningUpInput.CleaningUpOption.tokenizingInput(option)
+    def typingWords(self):
+        _split = CleaningUpInput.CleaningUpOption.tokenizingInput(self.option)
 
         if _split[0] == "type.":
             pydirectinput.write(_split[1])
 
     # Common key presses
-    def commonFunctionKeys(option):
-        _split = CleaningUpInput.CleaningUpOption.tokenizingInput(option)
+    def commonFunctionKeys(self):
+        _split = CleaningUpInput.CleaningUpOption.tokenizingInput(self.option)
 
         if _split[0] == "press" or _split[0] == "press,":
             if _split[1] == "enter":
@@ -80,8 +98,8 @@ class KeyboardClass:
                 pydirectinput.press("down")
 
     # Used for all single letter key presses
-    def singleLetterKeyPresses(option):
-        _split = CleaningUpInput.CleaningUpOption.tokenizingInput(option)
+    def singleLetterKeyPresses(self):
+        _split = CleaningUpInput.CleaningUpOption.tokenizingInput(self.option)
 
         if _split[0] == "press" or _split[0] == "press,":
             if _split[1] == "a":
@@ -138,8 +156,8 @@ class KeyboardClass:
     # def multiple Key presses(option):
 
     # Used to capitalize or lowercase letters
-    def lowerOrUpper(option):
-        _split = CleaningUpInput.CleaningUpOption.tokenizingInput(option)
+    def lowerOrUpper(self):
+        _split = CleaningUpInput.CleaningUpOption.tokenizingInput(self.option)
 
         if _split[0] == "lower" or _split[0] == "lower,":
             pydirectinput.press(_split[1][0])
