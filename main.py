@@ -2,7 +2,6 @@ import VoiceIntake
 import Keyboard
 from sounddevice import wait
 
-
 # Main function
 def main():
     while 1 == 1:
@@ -13,9 +12,12 @@ def main():
             line = f.readline()
 
             # process the voice recording
-            Keyboard.CleaningUpInput.cleaningUpOption(line)
-        wait(2)
+            option = Keyboard.CleaningUpInput.lowercasingOption(line)
+            tokenizedOption = Keyboard.CleaningUpInput.tokenizingInput(line)
 
+            if tokenizedOption[0] == 'open':
+                Keyboard.KeyboardClass.openAppsThroughCLI(option)
+        wait(2)
 
 # Used to implement main
 if __name__ == "__main__":

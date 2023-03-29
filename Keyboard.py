@@ -10,57 +10,44 @@ class CleaningUpInput:
         self.option = option
 
     # Used to get rid of any sort of punctuation
-    def cleaningUpOption(self):
+    def lowercasingOption(self, option):
 
-        optionclean = self.option.replace(".", "")
-        optionclean = self.option.replace("?", "")
-        optionclean = self.option.replace("!", "")
-        optionclean = self.option.replace(",", "")
-
-        print(optionclean)
-
-        optionlower = optionclean.lower()
+        optionlower = option.lower()
 
         print(optionlower)
 
         return optionlower
 
     # Used to split the option into tokens
-    def tokenizingInput(self):
+    def tokenizingInput(self, option):
 
-        option = CleaningUpInput.CleaningUpOption(self.option)
+        option = CleaningUpInput.lowercasingOption(option)
 
         if "." in option:
-            optionsplit = option.split(".", 1)
-            if optionsplit[0] == optionsplit[1]:
-                option = optionsplit[0]
-            else:
-                option = option.replace(".", "")
-        option = option.replace("?", "")
-        option = option.replace(",", "")
-
-        print(option)
-
-        option = option.lower()
+            option = option.replace(".", "")
 
         print(option)
 
         _split = option.split(" ", 1)
-        _completerSplit = option.split(" ")
+        _completeSplit = option.split(" ")
 
+        return _completeSplit
 
 class KeyboardClass:
 
     def __init__(self, option):
         self.option = option
 
-    # Used to open applications through CLI (not working yet)
+
+    #CHECK FIRST COUPLE SPLITS
+
+    # Used to open applications through CLI
     def openAppsThroughCLI(self):
         if "open" in self.option:
             app_name = self.option.replace("open ", "").strip()
             open(app_name, match_closest=True)
 
-    # Used to close applications through CLI (not working yet)
+    # Used to close applications through CLI
     def closeAppsThroughCLI(self):
         if "close" in self.option:
             app_name = self.option.replace("close ", "").strip()
@@ -153,7 +140,9 @@ class KeyboardClass:
             elif _split[1] == "z":
                 pydirectinput.press("z")
 
+
     # def multiple Key presses(option):
+
 
     # Used to capitalize or lowercase letters
     def lowerOrUpper(self):
