@@ -3,20 +3,26 @@ import Keyboard
 from sounddevice import wait
 
 # Main function
-def main():
+def main(option=None):
+
+    viVI = VoiceIntake.VoiceInput()
+    viF = VoiceIntake.File()
+    kbCUI = Keyboard.CleaningUpInput(option)
+    kbKC = Keyboard.KeyboardClass(option)
+
     while 1 == 1:
         print("Recording")
-        VoiceIntake.VoiceInput.record_voice()
-        text = VoiceIntake.File.request_file()
+        viVI.record_voice()
+        text = viF.request_file()
         with open("output.txt") as f:
             line = f.readline()
 
             # process the voice recording
-            option = Keyboard.CleaningUpInput.lowercasingOption(line)
-            tokenizedOption = Keyboard.CleaningUpInput.tokenizingInput(line)
+            textOutput = kbCUI.lowercasingOption(line)
 
-            if tokenizedOption[0] == 'open':
-                Keyboard.KeyboardClass.openAppsThroughCLI(option)
+
+            if textOutput == 'open':
+                kbKC.openAppsThroughCLI(textOutput)
         wait(2)
 
 # Used to implement main

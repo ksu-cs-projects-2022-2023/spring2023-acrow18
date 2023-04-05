@@ -1,4 +1,4 @@
-from AppOpener import open, close
+import AppOpener
 import pyautogui
 import pydirectinput
 
@@ -12,46 +12,38 @@ class CleaningUpInput:
     # Used to get rid of any sort of punctuation
     def lowercasingOption(self, option):
 
-        optionlower = option.lower()
+        lowercaseOption = option.lower()
 
-        print(optionlower)
+        if "." in lowercaseOption:
+            lowercaseOption = lowercaseOption.replace(".", "")
 
-        return optionlower
+        print(lowercaseOption)
 
-    # Used to split the option into tokens
-    def tokenizingInput(self, option):
-
-        option = CleaningUpInput.lowercasingOption(option)
-
-        if "." in option:
-            option = option.replace(".", "")
-
-        print(option)
-
-        _split = option.split(" ", 1)
-        _completeSplit = option.split(" ")
-
-        return _completeSplit
+        return lowercaseOption
 
 class KeyboardClass:
 
     def __init__(self, option):
         self.option = option
 
-
-    #CHECK FIRST COUPLE SPLITS
-
     # Used to open applications through CLI
-    def openAppsThroughCLI(self):
-        if "open" in self.option:
-            app_name = self.option.replace("open ", "").strip()
-            open(app_name, match_closest=True)
+    def openAppsThroughCLI(self, option):
+
+        kbCUI = CleaningUpInput(option)
+        lowercaseOption = kbCUI.lowercasingOption(option)
+
+        if "open" in lowercaseOption:
+            app_name = lowercaseOption.replace("open ", "").strip()
+            AppOpener.open(app_name, match_closest=True)
 
     # Used to close applications through CLI
-    def closeAppsThroughCLI(self):
-        if "close" in self.option:
+    def closeAppsThroughCLI(self, option):
+
+        kbCUI = CleaningUpInput(option)
+
+        if "close" in kbCUI.tokenizingInput(option):
             app_name = self.option.replace("close ", "").strip()
-            close(app_name, match_closest=True, output=False)
+            AppOpener.close(app_name, match_closest=True, output=False)
 
     # Used to type words
     def typingWords(self):
