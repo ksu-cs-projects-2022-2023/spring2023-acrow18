@@ -11,7 +11,6 @@ class CleaningUpInput:
 
     # Used to get rid of any sort of punctuation
     def lowercasingOption(self, option):
-
         lowercaseOption = option.lower()
 
         if "." in lowercaseOption:
@@ -20,6 +19,7 @@ class CleaningUpInput:
         print(lowercaseOption)
 
         return lowercaseOption
+
 
 class KeyboardClass:
 
@@ -30,6 +30,8 @@ class KeyboardClass:
     def openAppsThroughCLI(self, option):
 
         kbCUI = CleaningUpInput(option)
+
+        #change this to go over
         lowercaseOption = kbCUI.lowercasingOption(option)
 
         if "open" in lowercaseOption:
@@ -132,9 +134,7 @@ class KeyboardClass:
             elif _split[1] == "z":
                 pydirectinput.press("z")
 
-
     # def multiple Key presses(option):
-
 
     # Used to capitalize or lowercase letters
     def lowerOrUpper(self):
