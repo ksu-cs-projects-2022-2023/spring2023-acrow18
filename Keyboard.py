@@ -30,8 +30,6 @@ class KeyboardClass:
     def openAppsThroughCLI(self, option):
 
         kbCUI = CleaningUpInput(option)
-
-        #change this to go over
         lowercaseOption = kbCUI.lowercasingOption(option)
 
         if "open" in lowercaseOption:
@@ -42,21 +40,28 @@ class KeyboardClass:
     def closeAppsThroughCLI(self, option):
 
         kbCUI = CleaningUpInput(option)
+        lowercaseOption = kbCUI.lowercasingOption(option)
 
-        if "close" in kbCUI.tokenizingInput(option):
-            app_name = self.option.replace("close ", "").strip()
+        if "close" in lowercaseOption:
+            app_name = lowercaseOption.replace("open ", "").strip()
             AppOpener.close(app_name, match_closest=True, output=False)
 
     # Used to type words
-    def typingWords(self):
-        _split = CleaningUpInput.CleaningUpOption.tokenizingInput(self.option)
+    def typingWords(self, option):
+        kbCUI = CleaningUpInput(option)
+        lowercaseOption = kbCUI.lowercasingOption(option)
 
-        if _split[0] == "type.":
-            pydirectinput.write(_split[1])
+        finalizedOutput = lowercaseOption.split(' ', 1)
+
+        if "type" in lowercaseOption:
+            pydirectinput.write(finalizedOutput[1])
 
     # Common key presses
-    def commonFunctionKeys(self):
-        _split = CleaningUpInput.CleaningUpOption.tokenizingInput(self.option)
+    def commonFunctionKeys(self, option):
+        kbCUI = CleaningUpInput(option)
+        lowercaseOption = kbCUI.lowercasingOption(option)
+
+        _split = lowercaseOption.split(' ', 1)
 
         if _split[0] == "press" or _split[0] == "press,":
             if _split[1] == "enter":
@@ -79,9 +84,11 @@ class KeyboardClass:
                 pydirectinput.press("down")
 
     # Used for all single letter key presses
-    def singleLetterKeyPresses(self):
-        _split = CleaningUpInput.CleaningUpOption.tokenizingInput(self.option)
+    def singleLetterKeyPresses(self, option):
+        kbCUI = CleaningUpInput(option)
+        lowercaseOption = kbCUI.lowercasingOption(option)
 
+        _split = lowercaseOption.split(' ', 1)
         if _split[0] == "press" or _split[0] == "press,":
             if _split[1] == "a":
                 pydirectinput.press("a")
@@ -134,11 +141,23 @@ class KeyboardClass:
             elif _split[1] == "z":
                 pydirectinput.press("z")
 
-    # def multiple Key presses(option):
+    # Used for multiple key presses
+    def multipleKeypresses(self, option):
+        kbCUI = CleaningUpInput(option)
+        lowercaseOption = kbCUI.lowercasingOption(option)
+
+        _split = lowercaseOption.split(' ', 1)
+
+        if _split[0] == "hold" or _split[0] == "hold,":
+            with pyautogui.hold(_split[1]):
+                pydirectinput.press(_split[2][0])
 
     # Used to capitalize or lowercase letters
-    def lowerOrUpper(self):
-        _split = CleaningUpInput.CleaningUpOption.tokenizingInput(self.option)
+    def lowerOrUpper(self, option):
+        kbCUI = CleaningUpInput(option)
+        lowercaseOption = kbCUI.lowercasingOption(option)
+
+        _split = lowercaseOption.split(' ', 1)
 
         if _split[0] == "lower" or _split[0] == "lower,":
             pydirectinput.press(_split[1][0])
