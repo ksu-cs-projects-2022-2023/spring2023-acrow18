@@ -24,9 +24,8 @@ class CleaningUpInput:
     def removingCommandWord(self, option):
         # Removing Initial word from string
         # Using slicing
-        res = option.replace("open ", "").strip()
-
-        print(res)
+        x = option.split()
+        res = " ".join(x[1:])
 
         return res
 
@@ -72,8 +71,8 @@ class KeyboardClass:
         noCmdWordOption = kbCUI.removingCommandWord(lowercaseOption)
 
         if "press" in lowercaseOption:
-            if noCmdWordOption == "enter":
-                pydirectinput.press("enter")
+            if noCmdWordOption == 'enter':
+                pydirectinput.keyDown('enter')
             elif noCmdWordOption == "backspace":
                 pydirectinput.press("backspace")
             elif noCmdWordOption == "tab":
@@ -97,7 +96,7 @@ class KeyboardClass:
         lowercaseOption = kbCUI.lowercasingOption(option)
         noCmdWordOption = kbCUI.removingCommandWord(lowercaseOption)
 
-        if noCmdWordOption == "press" or noCmdWordOption == "press,":
+        if lowercaseOption[0:5] == "press":
             if noCmdWordOption == "a":
                 pydirectinput.press("a")
             elif noCmdWordOption == "b":
@@ -165,12 +164,11 @@ class KeyboardClass:
     def lowerOrUpper(self, option):
         kbCUI = CleaningUpInput(option)
         lowercaseOption = kbCUI.lowercasingOption(option)
+        noCmdWord = kbCUI.removingCommandWord(lowercaseOption)
 
-        _split = lowercaseOption.split(' ', 1)
+        if lowercaseOption[0:5] == "lower":
+            pydirectinput.press(noCmdWord)
 
-        if _split[0] == "lower" or _split[0] == "lower,":
-            pydirectinput.press(_split[1])
-
-        if _split[0] == "upper" or _split[0] == "upper,":
+        if lowercaseOption[0:5] == "upper":
             with pyautogui.hold("shift"):
-                pydirectinput.press(_split[1])
+                pydirectinput.press(noCmdWord)
