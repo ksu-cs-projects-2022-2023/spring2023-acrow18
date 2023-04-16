@@ -38,9 +38,9 @@ def main(option=None):
             if 'press' == textOutput[0:5]:
                 noCmdWord = kbCUI.removingCommandWord(textOutput)
                 if noCmdWord[2] == " ":
-                    kbKC.singleLetterKeyPresses(noCmdWord)
+                    kbKC.singleLetterKeyPresses(textOutput)
                 else:
-                    kbKC.commonFunctionKeys(noCmdWord)
+                    kbKC.commonFunctionKeys(textOutput)
 
             # multiple key presses
             if 'hold' == textOutput[0:4]:
