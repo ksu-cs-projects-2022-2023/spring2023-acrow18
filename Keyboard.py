@@ -20,6 +20,16 @@ class CleaningUpInput:
 
         return lowercaseOption
 
+    # removing command word (a.k.a first word like open/close etc.) from string
+    def removingCommandWord(self, option):
+        # Removing Initial word from string
+        # Using slicing
+        res = option.replace("open ", "").strip()
+
+        print(res)
+
+        return res
+
 
 class KeyboardClass:
 
@@ -50,107 +60,106 @@ class KeyboardClass:
     def typingWords(self, option):
         kbCUI = CleaningUpInput(option)
         lowercaseOption = kbCUI.lowercasingOption(option)
-
-        finalizedOutput = lowercaseOption.split(' ', 1)
+        noCmdWordOption = kbCUI.removingCommandWord(lowercaseOption)
 
         if "type" in lowercaseOption:
-            pydirectinput.write(finalizedOutput[1])
+            pydirectinput.write(noCmdWordOption)
 
     # Common key presses
     def commonFunctionKeys(self, option):
         kbCUI = CleaningUpInput(option)
         lowercaseOption = kbCUI.lowercasingOption(option)
+        noCmdWordOption = kbCUI.removingCommandWord(lowercaseOption)
 
-        _split = lowercaseOption.split(' ', 1)
-
-        if _split[0] == "press" or _split[0] == "press,":
-            if _split[1] == "enter":
+        if "press" in lowercaseOption:
+            if noCmdWordOption == "enter":
                 pydirectinput.press("enter")
-            elif _split[1] == "backspace":
+            elif noCmdWordOption == "backspace":
                 pydirectinput.press("backspace")
-            elif _split[1] == "tab":
+            elif noCmdWordOption == "tab":
                 pydirectinput.press("tab")
-            elif _split[1] == "escape":
+            elif noCmdWordOption == "escape":
                 pydirectinput.press("esc")
-            elif _split[1] == "space":
+            elif noCmdWordOption == "space":
                 pydirectinput.press("space")
-            elif _split[1] == "right":
+            elif noCmdWordOption == "right":
                 pydirectinput.press("right")
-            elif _split[1] == "left":
+            elif noCmdWordOption == "left":
                 pydirectinput.press("left")
-            elif _split[1] == "up":
+            elif noCmdWordOption == "up":
                 pydirectinput.press("up")
-            elif _split[1] == "down":
+            elif noCmdWordOption == "down":
                 pydirectinput.press("down")
 
     # Used for all single letter key presses
     def singleLetterKeyPresses(self, option):
         kbCUI = CleaningUpInput(option)
         lowercaseOption = kbCUI.lowercasingOption(option)
+        noCmdWordOption = kbCUI.removingCommandWord(lowercaseOption)
 
-        _split = lowercaseOption.split(' ', 1)
-        if _split[0] == "press" or _split[0] == "press,":
-            if _split[1] == "a":
+        if noCmdWordOption == "press" or noCmdWordOption == "press,":
+            if noCmdWordOption == "a":
                 pydirectinput.press("a")
-            elif _split[1] == "b":
+            elif noCmdWordOption == "b":
                 pydirectinput.press("b")
-            elif _split[1] == "c":
+            elif noCmdWordOption == "c":
                 pydirectinput.press("c")
-            elif _split[1] == "d":
+            elif noCmdWordOption == "d":
                 pydirectinput.press("d")
-            elif _split[1] == "e":
+            elif noCmdWordOption == "e":
                 pydirectinput.press("e")
-            elif _split[1] == "f":
+            elif noCmdWordOption == "f":
                 pydirectinput.press("f")
-            elif _split[1] == "g":
+            elif noCmdWordOption == "g":
                 pydirectinput.press("g")
-            elif _split[1] == "h":
+            elif noCmdWordOption == "h":
                 pydirectinput.press("h")
-            elif _split[1] == "i":
+            elif noCmdWordOption == "i":
                 pydirectinput.press("i")
-            elif _split[1] == "j":
+            elif noCmdWordOption == "j":
                 pydirectinput.press("j")
-            elif _split[1] == "l":
+            elif noCmdWordOption == "l":
                 pydirectinput.press("l")
-            elif _split[1] == "m":
+            elif noCmdWordOption == "m":
                 pydirectinput.press("m")
-            elif _split[1] == "n":
+            elif noCmdWordOption == "n":
                 pydirectinput.press("n")
-            elif _split[1] == "o":
+            elif noCmdWordOption == "o":
                 pydirectinput.press("o")
-            elif _split[1] == "p":
+            elif noCmdWordOption == "p":
                 pydirectinput.press("p")
-            elif _split[1] == "q":
+            elif noCmdWordOption == "q":
                 pydirectinput.press("q")
-            elif _split[1] == "r":
+            elif noCmdWordOption == "r":
                 pydirectinput.press("r")
-            elif _split[1] == "s":
+            elif noCmdWordOption == "s":
                 pydirectinput.press("s")
-            elif _split[1] == "t":
+            elif noCmdWordOption == "t":
                 pydirectinput.press("t")
-            elif _split[1] == "u":
+            elif noCmdWordOption == "u":
                 pydirectinput.press("u")
-            elif _split[1] == "v":
+            elif noCmdWordOption == "v":
                 pydirectinput.press("v")
-            elif _split[1] == "w":
+            elif noCmdWordOption == "w":
                 pydirectinput.press("w")
-            elif _split[1] == "x":
+            elif noCmdWordOption == "x":
                 pydirectinput.press("x")
-            elif _split[1] == "y":
+            elif noCmdWordOption == "y":
                 pydirectinput.press("y")
-            elif _split[1] == "z":
+            elif noCmdWordOption == "z":
                 pydirectinput.press("z")
 
     # Used for multiple key presses
     def multipleKeypresses(self, option):
         kbCUI = CleaningUpInput(option)
         lowercaseOption = kbCUI.lowercasingOption(option)
+        noCmdWordOption = kbCUI.removingCommandWord(lowercaseOption)
 
         _split = lowercaseOption.split(' ', 1)
 
         if _split[0] == "hold" or _split[0] == "hold,":
-            with pyautogui.hold(_split[1]):
-                pydirectinput.press(_split[2][0])
+            with pyautogui.hold(_split[1][0]):
+                pydirectinput.press(_split[1][1])
 
     # Used to capitalize or lowercase letters
     def lowerOrUpper(self, option):
@@ -160,8 +169,8 @@ class KeyboardClass:
         _split = lowercaseOption.split(' ', 1)
 
         if _split[0] == "lower" or _split[0] == "lower,":
-            pydirectinput.press(_split[1][0])
+            pydirectinput.press(_split[1])
 
         if _split[0] == "upper" or _split[0] == "upper,":
             with pyautogui.hold("shift"):
-                pydirectinput.press(_split[1][0])
+                pydirectinput.press(_split[1])

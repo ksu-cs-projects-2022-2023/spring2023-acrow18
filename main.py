@@ -20,11 +20,6 @@ def main(option=None):
             # process the voice recording
             textOutput = kbCUI.lowercasingOption(line)
 
-            # parse first part of string i.e. (open, close etc.)
-            # finalizedOutput = textOutput.split(' ', 1)
-
-            # print(finalizedOutput)
-
             # used to open/close applications
             if 'open' == textOutput[0:4]:
                 kbKC.openAppsThroughCLI(textOutput)
@@ -36,9 +31,16 @@ def main(option=None):
             if 'type' == textOutput[0:4]:
                 kbKC.typingWords(textOutput)
 
+            # WORKS UP TO THIS POINT
+
             # used for key presses
             # need to test another statement
             if 'press' == textOutput[0:5]:
+                noCmdword = kbCUI.removingCommandWord(textOutput)
+                if noCmdword[0:2] == " ":
+                    kbKC.singleLetterKeyPresses(noCmdword)
+                else:
+                    kbKC.commonFunctionKeys(noCmdword)
 
             # multiple key presses
             if 'hold' == textOutput[0:4]:
