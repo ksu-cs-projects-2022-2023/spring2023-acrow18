@@ -71,8 +71,8 @@ class KeyboardClass:
         noCmdWordOption = kbCUI.removingCommandWord(lowercaseOption)
 
         if "press" in lowercaseOption:
-            if noCmdWordOption == 'enter':
-                pydirectinput.keyDown('enter')
+            if noCmdWordOption == "enter":
+                pydirectinput.press("enter")
             elif noCmdWordOption == "backspace":
                 pydirectinput.press("backspace")
             elif noCmdWordOption == "tab":
@@ -96,6 +96,7 @@ class KeyboardClass:
         lowercaseOption = kbCUI.lowercasingOption(option)
         noCmdWordOption = kbCUI.removingCommandWord(lowercaseOption)
 
+        # look up specific libraries/voice libraries ("press the later")
         if lowercaseOption[0:5] == "press":
             if noCmdWordOption == "a":
                 pydirectinput.press("a")
