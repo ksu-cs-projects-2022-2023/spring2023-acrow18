@@ -3,44 +3,57 @@ Hello user
 Only pass commands when the cmd prompt says recording and it will stop when it say file queing/processing
 
 
-Possible Commands
+POSSIBLE COMMANDS
 -----------------------------
-.Say the untabbed then one of the tabbed under the tabbed i.e. Press enter
-.Anything in "" can be replaced else it must one of the options i.e. Open minecraft
-.Only use open if you know what you want to say for the true hands off expirience 
-.Enjoy Yourself
-------------------------------
+
 Press
-	-enter
-	-backspace
-	-tab
-	-escape
+Open/Close
+Type
+Mouse functions (not added yet)
+Upper
+Lower
+
+------------------------------
+
+Press
+  -enter
+  -backspace
+  -tab
+  -escape
   -space
   -right arrow
   -left arrow
   -up arrow
   -down arrow
-  -All letter keys
+  -All letter keys (e.g. Press d for dave as command)
+  
 -------------------------------
 
-Open
-	-"Any application name"
+Open/Close
+  -"Any application name" (e.g. Open google chrome/close google chrome)
+  
 -------------------------------
 
 Type
-	-"what ever you want typed"
+   -"what ever you want typed" (e.g. type hello, world!)
+   
 -------------------------------
+
 - NOT ADDED -
 Mouse
-	-up
-	-down
-	-left
-	-right
+  -up
+  -down
+  -left
+  -right
+  
 -------------------------------
+
+-NOT CHECKED-
 Lower
-	-"any word that starts with the letter you want"
+  -"any word that starts with the letter you want"
 
 -------------------------------
 
+-NOT CHECKED-
 Upper
-	-"any word that starts with the letter you want"
+  -"any word that starts with the letter you want"
