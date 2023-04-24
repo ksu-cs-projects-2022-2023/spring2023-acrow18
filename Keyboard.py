@@ -140,6 +140,17 @@ class KeyboardClass:
         elif option == "z":
             pydirectinput.press("z")
 
+    # Used for multiple single presses
+    def mutipleSinglePresses(self, option):
+        if option == "right":
+            pydirectinput.press("right")
+        elif option == "left":
+            pydirectinput.press("left")
+        elif option == "up":
+            pydirectinput.press("up")
+        elif option == "down":
+            pydirectinput.press("down")
+
     # Used for multiple key presses
     def multipleKeypresses(self, option):
         kbCUI = CleaningUpInput(option)
