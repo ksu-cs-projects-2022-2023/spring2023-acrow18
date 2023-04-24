@@ -37,13 +37,17 @@ def main(option=None):
             # need to test another statement
             if 'press' == textOutput[0:5]:
                 noCmdWord = kbCUI.removingCommandWord(textOutput)
+                fixedNumAndLower = kbCUI.text2int(noCmdWord)
 
                 if 'for' == noCmdWord[2:5]:
                     kbKC.singleLetterKeyPresses(noCmdWord[0:1])
-                # else if 'times' == noCmdWord[10:13] or 'times' == noCmdWord[7:11] or 'times' == noCmdWord[11:14]:
-                 #   kbKC.mutipleSinglePresses(noCmdWord)
+                elif any(num.isdigit() for num in fixedNumAndLower) == True:
+                    kbKC.customSingleLetterKeyPresses(fixedNumAndLower)
                 else:
                     kbKC.commonFunctionKeys(noCmdWord)
+
+            if 'swtich applications' == textOutput[0:19]:
+                kbKC.switchingApplications(textOutput)
 
             # multiple key presses
             if 'hold' == textOutput[0:4]:

@@ -1,6 +1,7 @@
 import AppOpener
 import pyautogui
 import pydirectinput
+import re
 
 
 class CleaningUpInput:
@@ -29,6 +30,65 @@ class CleaningUpInput:
 
         return res
 
+    # changes number words (ten) to number values (10)
+    # pulled from https://stackoverflow.com/questions/493174/is-there-a-way-to-convert-number-words-to-integer (used to fix minor error with voice recognition)
+    def text2int(self, textnum, numwords={}):
+        if not numwords:
+            units = [
+                "zero", "one", "two", "three", "four", "five", "six", "seven", "eight",
+                "nine", "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen",
+                "sixteen", "seventeen", "eighteen", "nineteen",
+            ]
+
+            tens = ["", "", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety"]
+
+            scales = ["hundred", "thousand", "million", "billion", "trillion"]
+
+            numwords["and"] = (1, 0)
+            for idx, word in enumerate(units):  numwords[word] = (1, idx)
+            for idx, word in enumerate(tens):       numwords[word] = (1, idx * 10)
+            for idx, word in enumerate(scales): numwords[word] = (10 ** (idx * 3 or 2), 0)
+
+        ordinal_words = {'first': 1, 'second': 2, 'third': 3, 'fifth': 5, 'eighth': 8, 'ninth': 9, 'twelfth': 12}
+        ordinal_endings = [('ieth', 'y'), ('th', '')]
+
+        textnum = textnum.replace('-', ' ')
+
+        current = result = 0
+        curstring = ""
+        onnumber = False
+        for word in textnum.split():
+            if word in ordinal_words:
+                scale, increment = (1, ordinal_words[word])
+                current = current * scale + increment
+                if scale > 100:
+                    result += current
+                    current = 0
+                onnumber = True
+            else:
+                for ending, replacement in ordinal_endings:
+                    if word.endswith(ending):
+                        word = "%s%s" % (word[:-len(ending)], replacement)
+
+                if word not in numwords:
+                    if onnumber:
+                        curstring += repr(result + current) + " "
+                    curstring += word + " "
+                    result = current = 0
+                    onnumber = False
+                else:
+                    scale, increment = numwords[word]
+
+                    current = current * scale + increment
+                    if scale > 100:
+                        result += current
+                        current = 0
+                    onnumber = True
+
+        if onnumber:
+            curstring += repr(result + current)
+
+        return curstring
 
 class KeyboardClass:
 
@@ -54,6 +114,18 @@ class KeyboardClass:
         if "close" in lowercaseOption:
             app_name = lowercaseOption.replace("open ", "").strip()
             AppOpener.close(app_name, match_closest=True, output=False)
+
+    # Used to switch between open applications
+    def switchingApplications(self, option):
+        kbCUI = CleaningUpInput(option)
+        lowercaseOption = kbCUI.lowercasingOption(option)
+        fixedNumAndLower = kbCUI.text2int(lowercaseOption)
+
+        if "switch application" in fixedNumAndLower:
+            pydirectinput.hold('alt')
+            pydirectinput.press('tab')
+            KeyboardClass.repeatPresses(fixedNumAndLower)
+
 
     # Used to type words
     def typingWords(self, option):
@@ -86,8 +158,18 @@ class KeyboardClass:
         elif option == "down":
             pydirectinput.press("down")
 
+    # Using custom function for all single letter key presses
+    def customSingleLetterKeyPresses(self, option):
+        kbKC = KeyboardClass(option)
+
+        if option[1] == ' ' and option[0] <= 'z' and option[0] >= 'a':
+            kbKC.repeatPresses(option)
+
+
     # Used for all single letter key presses
     def singleLetterKeyPresses(self, option):
+        # if len(option) == 1 and option[0] <= 'z' and option[0] >= 'a':
+        # call custom function
         # command is "press "letter" for "word starting with letter" e.g. Press a for apple
         if option == "a":
             pydirectinput.press("a")
@@ -140,16 +222,17 @@ class KeyboardClass:
         elif option == "z":
             pydirectinput.press("z")
 
-    # Used for multiple single presses
-    def mutipleSinglePresses(self, option):
-        if option == "right":
-            pydirectinput.press("right")
-        elif option == "left":
-            pydirectinput.press("left")
-        elif option == "up":
-            pydirectinput.press("up")
-        elif option == "down":
-            pydirectinput.press("down")
+    # write a custom function (self, option, num)
+    # loop num of times calling pydirectinput.press(option)
+    # Used for multiple presses of the same key
+    def repeatPresses(self, option):
+        kbCUI = CleaningUpInput(option)
+        lowercaseOption = kbCUI.lowercasingOption(option)
+        fixedNumAndLower = kbCUI.text2int(option)
+
+        loopNum = [int(x.group()) for x in re.finditer(r'\d+', fixedNumAndLower)]  # gets number from string
+        for x in range(0, loopNum + 1):
+            pydirectinput.press(option)
 
     # Used for multiple key presses
     def multipleKeypresses(self, option):
