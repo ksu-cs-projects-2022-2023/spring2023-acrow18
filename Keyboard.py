@@ -66,88 +66,79 @@ class KeyboardClass:
 
     # Common key presses
     def commonFunctionKeys(self, option):
-        kbCUI = CleaningUpInput(option)
-        lowercaseOption = kbCUI.lowercasingOption(option)
-        noCmdWordOption = kbCUI.removingCommandWord(lowercaseOption)
 
-        if "press" in lowercaseOption:
-            if noCmdWordOption == "enter":
-                pydirectinput.press("enter")
-            elif noCmdWordOption == "backspace":
-                pydirectinput.press("backspace")
-            elif noCmdWordOption == "tab":
-                pydirectinput.press("tab")
-            elif noCmdWordOption == "escape":
-                pydirectinput.press("esc")
-            elif noCmdWordOption == "space":
-                pydirectinput.press("space")
-            elif noCmdWordOption == "right":
-                pydirectinput.press("right")
-            elif noCmdWordOption == "left":
-                pydirectinput.press("left")
-            elif noCmdWordOption == "up":
-                pydirectinput.press("up")
-            elif noCmdWordOption == "down":
-                pydirectinput.press("down")
+        if option == "enter":
+            pydirectinput.press("enter")
+        elif option == "backspace":
+            pydirectinput.press("backspace")
+        elif option == "tab":
+            pydirectinput.press("tab")
+        elif option == "escape":
+            pydirectinput.press("esc")
+        elif option == "space":
+            pydirectinput.press("space")
+        elif option == "right":
+            pydirectinput.press("right")
+        elif option == "left":
+            pydirectinput.press("left")
+        elif option == "up":
+            pydirectinput.press("up")
+        elif option == "down":
+            pydirectinput.press("down")
 
     # Used for all single letter key presses
     def singleLetterKeyPresses(self, option):
-        kbCUI = CleaningUpInput(option)
-        lowercaseOption = kbCUI.lowercasingOption(option)
-        noCmdWordOption = kbCUI.removingCommandWord(lowercaseOption)
-
-        # look up specific libraries/voice libraries ("press the later")
-        if lowercaseOption[0:5] == "press":
-            if noCmdWordOption == "a":
-                pydirectinput.press("a")
-            elif noCmdWordOption == "b":
-                pydirectinput.press("b")
-            elif noCmdWordOption == "c":
-                pydirectinput.press("c")
-            elif noCmdWordOption == "d":
-                pydirectinput.press("d")
-            elif noCmdWordOption == "e":
-                pydirectinput.press("e")
-            elif noCmdWordOption == "f":
-                pydirectinput.press("f")
-            elif noCmdWordOption == "g":
-                pydirectinput.press("g")
-            elif noCmdWordOption == "h":
-                pydirectinput.press("h")
-            elif noCmdWordOption == "i":
-                pydirectinput.press("i")
-            elif noCmdWordOption == "j":
-                pydirectinput.press("j")
-            elif noCmdWordOption == "l":
-                pydirectinput.press("l")
-            elif noCmdWordOption == "m":
-                pydirectinput.press("m")
-            elif noCmdWordOption == "n":
-                pydirectinput.press("n")
-            elif noCmdWordOption == "o":
-                pydirectinput.press("o")
-            elif noCmdWordOption == "p":
-                pydirectinput.press("p")
-            elif noCmdWordOption == "q":
-                pydirectinput.press("q")
-            elif noCmdWordOption == "r":
-                pydirectinput.press("r")
-            elif noCmdWordOption == "s":
-                pydirectinput.press("s")
-            elif noCmdWordOption == "t":
-                pydirectinput.press("t")
-            elif noCmdWordOption == "u":
-                pydirectinput.press("u")
-            elif noCmdWordOption == "v":
-                pydirectinput.press("v")
-            elif noCmdWordOption == "w":
-                pydirectinput.press("w")
-            elif noCmdWordOption == "x":
-                pydirectinput.press("x")
-            elif noCmdWordOption == "y":
-                pydirectinput.press("y")
-            elif noCmdWordOption == "z":
-                pydirectinput.press("z")
+        # command is "press "letter" for "word starting with letter" e.g. Press a for apple
+        if option == "a":
+            pydirectinput.press("a")
+        elif option == "b":
+            pydirectinput.press("b")
+        elif option == "c":
+            pydirectinput.press("c")
+        elif option == "d":
+            pydirectinput.press("d")
+        elif option == "e":
+            pydirectinput.press("e")
+        elif option == "f":
+            pydirectinput.press("f")
+        elif option == "g":
+            pydirectinput.press("g")
+        elif option == "h":
+            pydirectinput.press("h")
+        elif option == "i":
+            pydirectinput.press("i")
+        elif option == "j":
+            pydirectinput.press("j")
+        elif option == "l":
+            pydirectinput.press("l")
+        elif option == "m":
+            pydirectinput.press("m")
+        elif option == "n":
+            pydirectinput.press("n")
+        elif option == "o":
+            pydirectinput.press("o")
+        elif option == "p":
+            pydirectinput.press("p")
+        elif option == "q":
+            pydirectinput.press("q")
+        elif option == "r":
+            pydirectinput.press("r")
+        elif option == "s":
+            pydirectinput.press("s")
+        elif option == "t":
+            pydirectinput.press("t")
+        elif option == "u":
+            pydirectinput.press("u")
+        elif option == "v":
+            pydirectinput.press("v")
+        elif option == "w":
+            pydirectinput.press("w")
+        elif option == "x":
+            pydirectinput.press("x")
+        elif option == "y":
+            pydirectinput.press("y")
+        elif option == "z":
+            pydirectinput.press("z")
 
     # Used for multiple key presses
     def multipleKeypresses(self, option):
