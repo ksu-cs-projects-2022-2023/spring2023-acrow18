@@ -3,6 +3,7 @@ from scipy.io.wavfile import write
 import sounddevice as sd
 import os
 
+# No change
 auth_key = '69c90bab080141a1af241f87a7961e4a'
 headers = {"authorization": auth_key, "content-type": "application/json"}
 
