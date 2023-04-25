@@ -230,7 +230,7 @@ class KeyboardClass:
         lowercaseOption = kbCUI.lowercasingOption(option)
         fixedNumAndLower = kbCUI.text2int(option)
 
-        loopNum = [int(x.group()) for x in re.finditer(r'\d+', fixedNumAndLower)]  # gets number from string
+        loopNum = int(re.search(r'\d+', fixedNumAndLower).group())  # gets number from string
         for x in range(0, loopNum + 1):
             pydirectinput.press(option)
 
