@@ -90,6 +90,7 @@ class CleaningUpInput:
 
         return curstring
 
+
 class KeyboardClass:
 
     def __init__(self, option):
@@ -118,14 +119,14 @@ class KeyboardClass:
     # Used to switch between open applications
     def switchingApplications(self, option):
         kbCUI = CleaningUpInput(option)
+        kbKC = KeyboardClass(option)
         lowercaseOption = kbCUI.lowercasingOption(option)
         fixedNumAndLower = kbCUI.text2int(lowercaseOption)
 
         if "switch application" in fixedNumAndLower:
             pydirectinput.hold('alt')
             pydirectinput.press('tab')
-            KeyboardClass.repeatPresses(fixedNumAndLower)
-
+            kbKC.repeatPresses(fixedNumAndLower)
 
     # Used to type words
     def typingWords(self, option):
@@ -164,7 +165,6 @@ class KeyboardClass:
 
         if option[1] == ' ' and option[0] <= 'z' and option[0] >= 'a':
             kbKC.repeatPresses(option)
-
 
     # Used for all single letter key presses
     def singleLetterKeyPresses(self, option):
@@ -228,7 +228,7 @@ class KeyboardClass:
     def repeatPresses(self, option):
         kbCUI = CleaningUpInput(option)
         lowercaseOption = kbCUI.lowercasingOption(option)
-        fixedNumAndLower = kbCUI.text2int(option)
+        fixedNumAndLower = kbCUI.text2int(lowercaseOption)
 
         loopNum = int(re.search(r'\d+', fixedNumAndLower).group())  # gets number from string
         for x in range(0, loopNum + 1):
