@@ -123,9 +123,10 @@ class KeyboardClass:
         fixedNumAndLower = kbCUI.text2int(option)
 
         if "switch application" in fixedNumAndLower:
-            pydirectinput.hold('alt')
+            pydirectinput.keyDown('alt')
             pydirectinput.press('tab')
             kbKC.repeatPresses(fixedNumAndLower)
+            pydirectinput.keyUp('alt')
 
     # Used to type words
     def typingWords(self, option):
@@ -138,25 +139,10 @@ class KeyboardClass:
 
     # Common key presses
     def commonFunctionKeys(self, option):
+        kbKC = KeyboardClass(option)
 
-        if option == "enter":
-            pydirectinput.press("enter")
-        elif option == "backspace":
-            pydirectinput.press("backspace")
-        elif option == "tab":
-            pydirectinput.press("tab")
-        elif option == "escape":
-            pydirectinput.press("esc")
-        elif option == "space":
-            pydirectinput.press("space")
-        elif option == "right":
-            pydirectinput.press("right")
-        elif option == "left":
-            pydirectinput.press("left")
-        elif option == "up":
-            pydirectinput.press("up")
-        elif option == "down":
-            pydirectinput.press("down")
+        if option[1] != ' ':
+            kbKC.repeatPresses(option)
 
     # Using custom function for all single letter key presses
     def customSingleLetterKeyPresses(self, option):

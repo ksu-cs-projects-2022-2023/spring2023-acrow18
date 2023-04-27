@@ -46,8 +46,9 @@ def main(option=None):
                 else:
                     kbKC.commonFunctionKeys(noCmdWord)
 
-            if 'swtich applications' == textOutput[0:19]:
-                kbKC.switchingApplications(textOutput)
+            if 'switch application' == textOutput[0:18]:
+                fixedNumAndLower = kbCUI.text2int(textOutput)
+                kbKC.switchingApplications(fixedNumAndLower)
 
             # multiple key presses
             if 'hold' == textOutput[0:4]:
