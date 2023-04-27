@@ -120,8 +120,7 @@ class KeyboardClass:
     def switchingApplications(self, option):
         kbCUI = CleaningUpInput(option)
         kbKC = KeyboardClass(option)
-        lowercaseOption = kbCUI.lowercasingOption(option)
-        fixedNumAndLower = kbCUI.text2int(lowercaseOption)
+        fixedNumAndLower = kbCUI.text2int(option)
 
         if "switch application" in fixedNumAndLower:
             pydirectinput.hold('alt')
@@ -166,73 +165,16 @@ class KeyboardClass:
         if option[1] == ' ' and option[0] <= 'z' and option[0] >= 'a':
             kbKC.repeatPresses(option)
 
-    # Used for all single letter key presses
-    def singleLetterKeyPresses(self, option):
-        # if len(option) == 1 and option[0] <= 'z' and option[0] >= 'a':
-        # call custom function
-        # command is "press "letter" for "word starting with letter" e.g. Press a for apple
-        if option == "a":
-            pydirectinput.press("a")
-        elif option == "b":
-            pydirectinput.press("b")
-        elif option == "c":
-            pydirectinput.press("c")
-        elif option == "d":
-            pydirectinput.press("d")
-        elif option == "e":
-            pydirectinput.press("e")
-        elif option == "f":
-            pydirectinput.press("f")
-        elif option == "g":
-            pydirectinput.press("g")
-        elif option == "h":
-            pydirectinput.press("h")
-        elif option == "i":
-            pydirectinput.press("i")
-        elif option == "j":
-            pydirectinput.press("j")
-        elif option == "l":
-            pydirectinput.press("l")
-        elif option == "m":
-            pydirectinput.press("m")
-        elif option == "n":
-            pydirectinput.press("n")
-        elif option == "o":
-            pydirectinput.press("o")
-        elif option == "p":
-            pydirectinput.press("p")
-        elif option == "q":
-            pydirectinput.press("q")
-        elif option == "r":
-            pydirectinput.press("r")
-        elif option == "s":
-            pydirectinput.press("s")
-        elif option == "t":
-            pydirectinput.press("t")
-        elif option == "u":
-            pydirectinput.press("u")
-        elif option == "v":
-            pydirectinput.press("v")
-        elif option == "w":
-            pydirectinput.press("w")
-        elif option == "x":
-            pydirectinput.press("x")
-        elif option == "y":
-            pydirectinput.press("y")
-        elif option == "z":
-            pydirectinput.press("z")
-
     # write a custom function (self, option, num)
     # loop num of times calling pydirectinput.press(option)
     # Used for multiple presses of the same key
     def repeatPresses(self, option):
         kbCUI = CleaningUpInput(option)
-        lowercaseOption = kbCUI.lowercasingOption(option)
-        fixedNumAndLower = kbCUI.text2int(lowercaseOption)
+        fixedNumAndLower = kbCUI.text2int(option)
 
         loopNum = int(re.search(r'\d+', fixedNumAndLower).group())  # gets number from string
-        for x in range(0, loopNum + 1):
-            pydirectinput.press(option)
+        for x in range(loopNum):
+            pydirectinput.press(option[:option.index(" ")])
 
     # Used for multiple key presses
     def multipleKeypresses(self, option):
