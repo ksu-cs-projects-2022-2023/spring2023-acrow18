@@ -116,7 +116,7 @@ class KeyboardClass:
             app_name = lowercaseOption.replace("open ", "").strip()
             AppOpener.close(app_name, match_closest=True, output=False)
 
-    # Used to switch between open applications (IP)
+    # Used to switch between open applications (KIND OF WORKS)
     def switchingApplications(self, option):
         kbCUI = CleaningUpInput(option)
         kbKC = KeyboardClass(option)
@@ -125,10 +125,19 @@ class KeyboardClass:
         if "switch application" in fixedNumAndLower:
             strippedFNL = fixedNumAndLower.replace("switch application, ", "").strip()
             if "press" in strippedFNL:
+                nocmdWords = strippedFNL.replace("press ", "").strip()
                 pydirectinput.keyDown('alt')
                 pydirectinput.press('tab')
-                kbKC.repeatPresses(strippedFNL)
+                kbKC.repeatPresses(nocmdWords)
                 pydirectinput.keyUp('alt')
+
+    # Used to view open apps (WORKS)
+    def viewOpenApps(self):
+        pydirectinput.keyDown('alt')
+        pydirectinput.press('tab')
+        pydirectinput.time.sleep(2)
+        pydirectinput.press('esc')
+        pydirectinput.keyUp('alt')
 
     # Used to type words (WORKS)
     def typingWords(self, option):
@@ -139,7 +148,7 @@ class KeyboardClass:
         if "type" in lowercaseOption:
             pydirectinput.write(noCmdWordOption)
 
-    # Common key presses
+    # Common key presses (KIND OF WORKS)
     def customCommonFunctionKeys(self, option):
         kbKC = KeyboardClass(option)
 

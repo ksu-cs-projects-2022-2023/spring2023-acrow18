@@ -34,6 +34,9 @@ def main(option=None):
                 # fixedNumAndLower = kbCUI.text2int(textOutput)
                 kbKC.switchingApplications(textOutput)
 
+            if 'view open applications' == textOutput[0:22]:
+                kbKC.viewOpenApps()
+
             # END OF APPLICATION BASED CALLS
 
             # Used to type words
@@ -47,11 +50,11 @@ def main(option=None):
 
                 # Used for single letter key presses
                 if any(num.isdigit() for num in fixedNumAndLower):
-                    kbKC.customSingleLetterKeyPresses(fixedNumAndLower)
+                    if fixedNumAndLower[2] == " ":
+                        kbKC.customSingleLetterKeyPresses(fixedNumAndLower)
                 # Used for function key presses
-                else:
-                    kbKC.customCommonFunctionKeys(noCmdWord)
-
+                    else:
+                        kbKC.customCommonFunctionKeys(noCmdWord)
 
             # multiple key presses
             if 'hold' == textOutput[0:4]:
