@@ -118,7 +118,7 @@ class KeyboardClass:
             app_name = lowercaseOption.replace("open ", "").strip()
             AppOpener.close(app_name, match_closest=True, output=False)
 
-    # Used to switch between open applications (KIND OF WORKS)
+    # Used to switch between open applications (WORKS)
     def switchingApplications(self, option):
         kbCUI = CleaningUpInput(option)
         kbKC = KeyboardClass(option)
