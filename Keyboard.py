@@ -16,6 +16,8 @@ class CleaningUpInput:
 
         if "." in lowercaseOption:
             lowercaseOption = lowercaseOption.replace(".", "")
+        if "?" in lowercaseOption:
+            lowercaseOption = lowercaseOption.replace("?", "")
 
         print(lowercaseOption)
 
@@ -123,9 +125,11 @@ class KeyboardClass:
         fixedNumAndLower = kbCUI.text2int(option)
 
         if "switch application" in fixedNumAndLower:
-            strippedFNL = fixedNumAndLower.replace("switch application, ", "").strip()
+            strippedFNL = fixedNumAndLower.replace("switch application ", "").strip()
             if "press" in strippedFNL:
                 nocmdWords = strippedFNL.replace("press ", "").strip()
+                if "write" in nocmdWords:
+                    fixedNoCmdWords = nocmdWords.replace("write ", "right ").strip()
                 pydirectinput.keyDown('alt')
                 pydirectinput.press('tab')
                 kbKC.repeatPresses(nocmdWords)
@@ -159,7 +163,7 @@ class KeyboardClass:
     def customSingleLetterKeyPresses(self, option):
         kbKC = KeyboardClass(option)
 
-        if option[1] == ' ' and option[0] <= 'z' and option[0] >= 'a':
+        if option[1] == ' ' and 'z' >= option[0] >= 'a':
             kbKC.repeatPresses(option)
 
     # write a custom function (self, option, num)
