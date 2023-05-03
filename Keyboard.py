@@ -96,7 +96,7 @@ class KeyboardClass:
     def __init__(self, option):
         self.option = option
 
-    # Used to open applications through CLI
+    # Used to open applications through CLI (WORKS)
     def openAppsThroughCLI(self, option):
 
         kbCUI = CleaningUpInput(option)
@@ -106,7 +106,7 @@ class KeyboardClass:
             app_name = lowercaseOption.replace("open ", "").strip()
             AppOpener.open(app_name, match_closest=True)
 
-    # Used to close applications through CLI
+    # Used to close applications through CLI (WORKS)
     def closeAppsThroughCLI(self, option):
 
         kbCUI = CleaningUpInput(option)
@@ -116,19 +116,21 @@ class KeyboardClass:
             app_name = lowercaseOption.replace("open ", "").strip()
             AppOpener.close(app_name, match_closest=True, output=False)
 
-    # Used to switch between open applications
+    # Used to switch between open applications (IP)
     def switchingApplications(self, option):
         kbCUI = CleaningUpInput(option)
         kbKC = KeyboardClass(option)
         fixedNumAndLower = kbCUI.text2int(option)
 
         if "switch application" in fixedNumAndLower:
-            pydirectinput.keyDown('alt')
-            pydirectinput.press('tab')
-            kbKC.repeatPresses(fixedNumAndLower)
-            pydirectinput.keyUp('alt')
+            strippedFNL = fixedNumAndLower.replace("switch application, ", "").strip()
+            if "press" in strippedFNL:
+                pydirectinput.keyDown('alt')
+                pydirectinput.press('tab')
+                kbKC.repeatPresses(strippedFNL)
+                pydirectinput.keyUp('alt')
 
-    # Used to type words
+    # Used to type words (WORKS)
     def typingWords(self, option):
         kbCUI = CleaningUpInput(option)
         lowercaseOption = kbCUI.lowercasingOption(option)
@@ -138,13 +140,13 @@ class KeyboardClass:
             pydirectinput.write(noCmdWordOption)
 
     # Common key presses
-    def commonFunctionKeys(self, option):
+    def customCommonFunctionKeys(self, option):
         kbKC = KeyboardClass(option)
 
         if option[1] != ' ':
             kbKC.repeatPresses(option)
 
-    # Using custom function for all single letter key presses
+    # Using custom function for all single letter key presses (WORKS)
     def customSingleLetterKeyPresses(self, option):
         kbKC = KeyboardClass(option)
 
@@ -153,7 +155,7 @@ class KeyboardClass:
 
     # write a custom function (self, option, num)
     # loop num of times calling pydirectinput.press(option)
-    # Used for multiple presses of the same key
+    # Used for multiple presses of the same key (WORKS)
     def repeatPresses(self, option):
         kbCUI = CleaningUpInput(option)
         fixedNumAndLower = kbCUI.text2int(option)
@@ -162,7 +164,7 @@ class KeyboardClass:
         for x in range(loopNum):
             pydirectinput.press(option[:option.index(" ")])
 
-    # Used for multiple key presses
+    # Used for multiple key presses (IP)
     def multipleKeypresses(self, option):
         kbCUI = CleaningUpInput(option)
         lowercaseOption = kbCUI.lowercasingOption(option)
@@ -174,15 +176,16 @@ class KeyboardClass:
             with pyautogui.hold(_split[1][0]):
                 pydirectinput.press(_split[1][1])
 
-    # Used to capitalize or lowercase letters
+    # Used to capitalize or lowercase letters (IP)
     def lowerOrUpper(self, option):
         kbCUI = CleaningUpInput(option)
+        kbKC = KeyboardClass(option)
         lowercaseOption = kbCUI.lowercasingOption(option)
         noCmdWord = kbCUI.removingCommandWord(lowercaseOption)
 
         if lowercaseOption[0:5] == "lower":
-            pydirectinput.press(noCmdWord)
+            kbKC.typingWords(noCmdWord)
 
         if lowercaseOption[0:5] == "upper":
             with pyautogui.hold("shift"):
-                pydirectinput.press(noCmdWord)
+                kbKC.typingWords(noCmdWord)

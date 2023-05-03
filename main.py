@@ -20,6 +20,8 @@ def main(option=None):
             # process the voice recording
             textOutput = kbCUI.lowercasingOption(line)
 
+            # START OF APPLICATION BASED CALLS
+
             # used to open/close applications
             if 'open' == textOutput[0:4]:
                 kbKC.openAppsThroughCLI(textOutput)
@@ -27,28 +29,29 @@ def main(option=None):
             if 'close' == textOutput[0:5]:
                 kbKC.closeAppsThroughCLI(textOutput)
 
-            # used to type words
+            # Used to switch between open applications
+            if 'switch application' == textOutput[0:18]:
+                # fixedNumAndLower = kbCUI.text2int(textOutput)
+                kbKC.switchingApplications(textOutput)
+
+            # END OF APPLICATION BASED CALLS
+
+            # Used to type words
             if 'type' == textOutput[0:4]:
                 kbKC.typingWords(textOutput)
 
-            # WORKS UP TO THIS POINT
-
-            # used for key presses
-            # need to test another statement
+            # Used for key presses
             if 'press' == textOutput[0:5]:
                 noCmdWord = kbCUI.removingCommandWord(textOutput)
                 fixedNumAndLower = kbCUI.text2int(noCmdWord)
 
-                if 'for' == noCmdWord[2:5]:
-                    kbKC.singleLetterKeyPresses(noCmdWord[0:1])
-                elif any(num.isdigit() for num in fixedNumAndLower) == True:
+                # Used for single letter key presses
+                if any(num.isdigit() for num in fixedNumAndLower):
                     kbKC.customSingleLetterKeyPresses(fixedNumAndLower)
+                # Used for function key presses
                 else:
-                    kbKC.commonFunctionKeys(noCmdWord)
+                    kbKC.customCommonFunctionKeys(noCmdWord)
 
-            if 'switch application' == textOutput[0:18]:
-                fixedNumAndLower = kbCUI.text2int(textOutput)
-                kbKC.switchingApplications(fixedNumAndLower)
 
             # multiple key presses
             if 'hold' == textOutput[0:4]:
