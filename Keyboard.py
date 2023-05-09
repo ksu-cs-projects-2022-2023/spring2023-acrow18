@@ -16,6 +16,8 @@ class CleaningUpInput:
 
         if "." in lowercaseOption:
             lowercaseOption = lowercaseOption.replace(".", "")
+        if "," in lowercaseOption:
+            lowercaseOption = lowercaseOption.replace(",", "")
         if "?" in lowercaseOption:
             lowercaseOption = lowercaseOption.replace("?", "")
 
@@ -194,12 +196,12 @@ class KeyboardClass:
         lowercaseOption = kbCUI.lowercasingOption(option)
         noCmdWordOption = kbCUI.removingCommandWord(lowercaseOption)
 
-        _split = lowercaseOption.split(' ', 1)
+        _split = lowercaseOption.split(' ')
 
-        if _split[1] == "control":
-            _fixedsplitwords = _split.replace("control ", "ctrl ").strip()
-            with pyautogui.hold(_fixedsplitwords[1]):
-                pydirectinput.press(_fixedsplitwords[3][0:1])
+        if _split[0] == "control" or _split[0] == "ctrl":
+            # _split = list(map(lambda x: x.replace('control', 'ctrl'), _split))
+            with pyautogui.hold(_split[0]):
+                pydirectinput.press(_split[2][0:1])
 
     # Used to capitalize or lowercase letters (IP)
     def lowerOrUpper(self, option):

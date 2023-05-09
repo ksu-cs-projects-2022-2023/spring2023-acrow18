@@ -22,7 +22,7 @@ def main(option=None):
 
             # used for multiple key presses
             _split = textOutput.split(' ')
-            _fixedsplitwords = _split.replace("press, ", "press").strip()
+            _split = list(map(lambda x: x.replace('press,', 'press'), _split))
 
             # START OF APPLICATION BASED CALLS
 
@@ -62,9 +62,8 @@ def main(option=None):
                     if fixedNumAndLower[2] == " ":
                         kbKC.customSingleLetterKeyPresses(fixedNumAndLower)
 
-                    elif _split[0] == 'press':
-                        print(_split)
-                        #kbKC.multipleKeypresses(_split)
+                    elif _split[2] == 'and':
+                        kbKC.multipleKeypresses(noCmdWord)
                     # Used for function key presses
                     else:
                         kbKC.customCommonFunctionKeys(noCmdWord)
