@@ -1,8 +1,10 @@
-Hello user
+Hello user of this application!
 
-Only pass commands when the cmd prompt says recording and it will stop when it say file queing/processing
+Please only pass commands when the cmd prompt says recording and it will stop when it say file queuing/processing
 
-IMPORTANT KEY CODES: https://learn.microsoft.com/en-us/windows/win32/inputdev/virtual-key-codes
+NOTE COMMANDS ARE VERY SPECIFIC AND ARE LISTED BELOW:
+
+IMPORTANT KEY CODES for commands: https://learn.microsoft.com/en-us/windows/win32/inputdev/virtual-key-codes
 
 
 POSSIBLE COMMANDS
