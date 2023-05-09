@@ -146,7 +146,7 @@ class KeyboardClass:
         pydirectinput.press('esc')
         pydirectinput.keyUp('alt')
 
-    # Used to add and remove apps
+    # Used to add and remove apps (POSSIBLY WORKS)
     def openProgramsOrFeatures(self):
         pyautogui.press('winleft')
         pydirectinput.write('appwiz.cpl')
@@ -162,6 +162,8 @@ class KeyboardClass:
 
         if "type" in lowercaseOption:
             pydirectinput.write(noCmdWordOption)
+
+    # BEGINNING OF PRESSES
 
     # Common key presses (KIND OF WORKS)
     def customCommonFunctionKeys(self, option):
@@ -192,7 +194,6 @@ class KeyboardClass:
     def multipleKeypresses(self, option):
         kbCUI = CleaningUpInput(option)
         lowercaseOption = kbCUI.lowercasingOption(option)
-        noCmdWordOption = kbCUI.removingCommandWord(lowercaseOption)
 
         _split = lowercaseOption.split(' ')
 
@@ -206,3 +207,6 @@ class KeyboardClass:
             else:
                 with pyautogui.hold(_split[0]):
                     pydirectinput.press(_split[2])
+
+    # END OF PRESSES
+# END OF ENTIRE CODE

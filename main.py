@@ -46,7 +46,6 @@ def main(option=None):
             if 'view open applications' == textOutput[0:22]:
                 kbKC.viewOpenApps()
 
-
             # END OF APPLICATION BASED CALLS
 
             # Used to type words
