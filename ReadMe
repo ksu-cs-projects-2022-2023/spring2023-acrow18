@@ -2,58 +2,64 @@ Hello user
 
 Only pass commands when the cmd prompt says recording and it will stop when it say file queing/processing
 
+IMPORTANT KEY CODES: https://learn.microsoft.com/en-us/windows/win32/inputdev/virtual-key-codes
+
 
 POSSIBLE COMMANDS
 -----------------------------
 
-Press
 Open/Close
+Uninstalling/Changing Applications
+Switching between open Applications
+Viewing Open Applications
 Type
-Mouse functions (not added yet)
-Upper
-Lower
+Press
 
 ------------------------------
 
-Press
+Presses for singular keys
   -enter
   -backspace
   -tab
   -escape
   -space
-  -right arrow
-  -left arrow
-  -up arrow
-  -down arrow
-  -All letter keys (e.g. Press d for dave as command)
+  -right "arrow"
+  -left "arrow"
+  -up "arrow"
+  -down "arrow"
+  -All letter keys
+  (e.g press left three times
+  press escape one time
+  press a four times etc.)
+  
+Presses for multiple keys
+  Ctrl + C
+  Ctrl + V
+  (e.g. press control and victor) <-- has to be said like this because input can't detect single letters for some reason
   
 -------------------------------
 
 Open/Close
   -"Any application name" (e.g. Open google chrome/close google chrome)
   
+  -------------------------------
+
+Uninstall/Change applications
+   - "Programs and features" (e.g. Programs and features)
+   
+-------------------------------
+
+Switching between open applications
+   - "Switch application" (e.g. Switch application press left three times)
+   
+-------------------------------
+
+Viewing open applications
+   - "View open applications" (e.g. View open application)
+   
 -------------------------------
 
 Type
    -"what ever you want typed" (e.g. type hello, world!)
    
 -------------------------------
-
-- NOT ADDED -
-Mouse
-  -up
-  -down
-  -left
-  -right
-  
--------------------------------
-
--NOT CHECKED-
-Lower
-  -"any word that starts with the letter you want"
-
--------------------------------
-
--NOT CHECKED-
-Upper
-  -"any word that starts with the letter you want"
