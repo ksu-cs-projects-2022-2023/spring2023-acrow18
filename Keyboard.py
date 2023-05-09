@@ -141,12 +141,13 @@ class KeyboardClass:
     # Used to view open apps (WORKS)
     def viewOpenApps(self):
         pydirectinput.keyDown('alt')
+        pydirectinput.keyDown('ctrl')
         pydirectinput.press('tab')
-        pydirectinput.time.sleep(2)
-        pydirectinput.press('esc')
         pydirectinput.keyUp('alt')
+        pydirectinput.keyUp('ctrl')
 
-    # Used to add and remove apps (POSSIBLY WORKS)
+
+    # Used to add and remove apps (WORKS)
     def openProgramsOrFeatures(self):
         pyautogui.press('winleft')
         pydirectinput.write('appwiz.cpl')
@@ -165,12 +166,14 @@ class KeyboardClass:
 
     # BEGINNING OF PRESSES
 
-    # Common key presses (KIND OF WORKS)
+    # Common key presses (WORKS)
     def customCommonFunctionKeys(self, option):
         kbKC = KeyboardClass(option)
 
-        if option[2] != ' ':
-            kbKC.repeatPresses(option)
+        newoption = option.replace("escape", 'esc')
+
+        if newoption[2] != ' ':
+            kbKC.repeatPresses(newoption)
 
     # Using custom function for all single letter key presses (WORKS)
     def customSingleLetterKeyPresses(self, option):

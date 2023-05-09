@@ -37,7 +37,7 @@ def main(option=None):
             if 'close' == textOutput[0:5]:
                 kbKC.closeAppsThroughCLI(textOutput)
 
-            # Used to switch between open applications
+            # Used to switch between open applications (LITTLE CLUNKY)
             if 'switch application' == textOutput[0:18]:
                 # fixedNumAndLower = kbCUI.text2int(textOutput)
                 kbKC.switchingApplications(textOutput)
@@ -67,14 +67,6 @@ def main(option=None):
                     # Used for function key presses
                     else:
                         kbKC.customCommonFunctionKeys(noCmdWord)
-
-            # multiple key presses
-            if 'hold' == textOutput[0:4]:
-                kbKC.multipleKeypresses(textOutput)
-
-            # used to capitalize or lowercase letters
-            if 'lower' == textOutput[0:5] or 'upper' == textOutput[0:5]:
-                kbKC.lowerOrUpper(textOutput)
 
         wait(2)
 
