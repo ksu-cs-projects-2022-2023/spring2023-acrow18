@@ -147,10 +147,8 @@ class KeyboardClass:
         pydirectinput.keyUp('alt')
 
     # Used to add and remove apps
-    def openChangeorRemoveApps(self):
-        pyautogui.hold('win')
-        pydirectinput.press('r')
-        pyautogui.keyUp('win')
+    def openProgramsOrFeatures(self):
+        pyautogui.press('winleft')
         pydirectinput.write('appwiz.cpl')
         pydirectinput.press('enter')
 
@@ -169,7 +167,7 @@ class KeyboardClass:
     def customCommonFunctionKeys(self, option):
         kbKC = KeyboardClass(option)
 
-        if option[1] != ' ':
+        if option[2] != ' ':
             kbKC.repeatPresses(option)
 
     # Using custom function for all single letter key presses (WORKS)
@@ -190,7 +188,7 @@ class KeyboardClass:
         for x in range(loopNum):
             pydirectinput.press(option[:option.index(" ")])
 
-    # Used for multiple key presses (IP)
+    # Used for multiple key presses (WORKS KINDA)
     def multipleKeypresses(self, option):
         kbCUI = CleaningUpInput(option)
         lowercaseOption = kbCUI.lowercasingOption(option)
@@ -199,20 +197,12 @@ class KeyboardClass:
         _split = lowercaseOption.split(' ')
 
         if _split[0] == "control" or _split[0] == "ctrl":
-            # _split = list(map(lambda x: x.replace('control', 'ctrl'), _split))
-            with pyautogui.hold(_split[0]):
-                pydirectinput.press(_split[2][0:1])
+            # for copy and paste
+            if _split[2][0:1] == "c" or _split[2][0:1] == "v":
+                with pyautogui.hold(_split[0]):
+                    pydirectinput.press(_split[2][0:1])
 
-    # Used to capitalize or lowercase letters (IP)
-    def lowerOrUpper(self, option):
-        kbCUI = CleaningUpInput(option)
-        kbKC = KeyboardClass(option)
-        lowercaseOption = kbCUI.lowercasingOption(option)
-        noCmdWord = kbCUI.removingCommandWord(lowercaseOption)
-
-        if lowercaseOption[0:5] == "lower":
-            kbKC.typingWords(noCmdWord)
-
-        if lowercaseOption[0:5] == "upper":
-            with pyautogui.hold("shift"):
-                kbKC.typingWords(noCmdWord)
+            # for other multi key presses
+            else:
+                with pyautogui.hold(_split[0]):
+                    pydirectinput.press(_split[2])

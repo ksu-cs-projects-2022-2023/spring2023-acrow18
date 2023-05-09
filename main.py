@@ -30,6 +30,10 @@ def main(option=None):
             if 'open' == textOutput[0:4]:
                 kbKC.openAppsThroughCLI(textOutput)
 
+            # Used to open programs and features to change/remove applications
+            if 'programs and features' == textOutput[0:21]:
+                kbKC.openProgramsOrFeatures()
+
             if 'close' == textOutput[0:5]:
                 kbKC.closeAppsThroughCLI(textOutput)
 
@@ -42,9 +46,6 @@ def main(option=None):
             if 'view open applications' == textOutput[0:22]:
                 kbKC.viewOpenApps()
 
-            # Used to open programs and features to change/remove applications
-            if 'open programs and features' == textOutput[0:26]:
-                kbKC.openChangeorRemoveApps()
 
             # END OF APPLICATION BASED CALLS
 
