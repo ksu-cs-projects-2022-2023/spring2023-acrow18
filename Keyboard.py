@@ -98,6 +98,7 @@ class KeyboardClass:
     def __init__(self, option):
         self.option = option
 
+    # BEGINNING OF APPLICATION BASED CODE
     # Used to open applications through CLI (WORKS)
     def openAppsThroughCLI(self, option):
 
@@ -143,6 +144,8 @@ class KeyboardClass:
         pydirectinput.press('esc')
         pydirectinput.keyUp('alt')
 
+    # END OF APPLICATION BASED CODE
+
     # Used to type words (WORKS)
     def typingWords(self, option):
         kbCUI = CleaningUpInput(option)
@@ -168,7 +171,7 @@ class KeyboardClass:
 
     # write a custom function (self, option, num)
     # loop num of times calling pydirectinput.press(option)
-    # Used for multiple presses of the same key (WORKS)
+    # Used for multiple presses of the same key (WORKS/NEED TO ADD EDGE CASE FOR NOT SAYING NUMBER)
     def repeatPresses(self, option):
         kbCUI = CleaningUpInput(option)
         fixedNumAndLower = kbCUI.text2int(option)
@@ -185,9 +188,10 @@ class KeyboardClass:
 
         _split = lowercaseOption.split(' ', 1)
 
-        if _split[0] == "hold" or _split[0] == "hold,":
-            with pyautogui.hold(_split[1][0]):
-                pydirectinput.press(_split[1][1])
+        if _split[1] == "control":
+            _fixedsplitwords = _split.replace("control ", "ctrl ").strip()
+            with pyautogui.hold(_fixedsplitwords[1]):
+                pydirectinput.press(_fixedsplitwords[3][0:1])
 
     # Used to capitalize or lowercase letters (IP)
     def lowerOrUpper(self, option):

@@ -20,6 +20,10 @@ def main(option=None):
             # process the voice recording
             textOutput = kbCUI.lowercasingOption(line)
 
+            # used for multiple key presses
+            _split = textOutput.split(' ')
+            _fixedsplitwords = _split.replace("press, ", "press").strip()
+
             # START OF APPLICATION BASED CALLS
 
             # used to open/close applications
@@ -52,7 +56,11 @@ def main(option=None):
                 if any(num.isdigit() for num in fixedNumAndLower):
                     if fixedNumAndLower[2] == " ":
                         kbKC.customSingleLetterKeyPresses(fixedNumAndLower)
-                # Used for function key presses
+
+                    elif _split[0] == 'press':
+                        print(_split)
+                        #kbKC.multipleKeypresses(_split)
+                    # Used for function key presses
                     else:
                         kbKC.customCommonFunctionKeys(noCmdWord)
 
