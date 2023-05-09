@@ -38,8 +38,13 @@ def main(option=None):
                 # fixedNumAndLower = kbCUI.text2int(textOutput)
                 kbKC.switchingApplications(textOutput)
 
+            # Used to view open applications
             if 'view open applications' == textOutput[0:22]:
                 kbKC.viewOpenApps()
+
+            # Used to open programs and features to change/remove applications
+            if 'open programs and features' == textOutput[0:26]:
+                kbKC.openChangeorRemoveApps()
 
             # END OF APPLICATION BASED CALLS
 

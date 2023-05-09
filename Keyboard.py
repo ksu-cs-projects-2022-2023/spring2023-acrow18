@@ -144,6 +144,14 @@ class KeyboardClass:
         pydirectinput.press('esc')
         pydirectinput.keyUp('alt')
 
+    # Used to add and remove apps
+    def openChangeorRemoveApps(self):
+        pyautogui.hold('win')
+        pydirectinput.press('r')
+        pyautogui.keyUp('win')
+        pydirectinput.write('appwiz.cpl')
+        pydirectinput.press('enter')
+
     # END OF APPLICATION BASED CODE
 
     # Used to type words (WORKS)
