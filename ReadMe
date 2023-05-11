@@ -1,6 +1,6 @@
 Hello user of this application!
 
-Please only pass commands when the cmd prompt says recording and it will stop when it say file queuing/processing
+Please only pass commands when the cmd prompt says recording and it will stop when it says file queuing/processing
 
 NOTE COMMANDS ARE VERY SPECIFIC AND ARE LISTED BELOW:
 
@@ -40,7 +40,7 @@ Presses for singular keys
 Presses for multiple keys
   Ctrl + C
   Ctrl + V
-  (e.g. press control and victor) <-- has to be said like this because input can't detect single letters for some reason
+  (e.g. press control and v for paste) <-- has to be said similar to this because input can't detect single letters for some reason
   
 -------------------------------
 
