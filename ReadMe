@@ -1,22 +1,23 @@
 Hello user of this application!
 
-Please only pass commands when the cmd prompt says recording and it will stop when it says file queuing/processing
+Please only pass commands when the cmd prompt says recording and it will stop when it says file queuing/processing!
 
-NOTE COMMANDS ARE VERY SPECIFIC AND ARE LISTED BELOW:
 
 IMPORTANT KEY CODES for commands: https://learn.microsoft.com/en-us/windows/win32/inputdev/virtual-key-codes
-IMPORT GOOGLE CHROME SHORTCUTS: https://support.google.com/chrome/answer/157179?hl=en&co=GENIE.Platform%3DDesktop#zippy=%2Cwebpage-shortcuts%2Ctab-window-shortcuts
+IMPORTANT GOOGLE CHROME SHORTCUTS: https://support.google.com/chrome/answer/157179?hl=en&co=GENIE.Platform%3DDesktop#zippy=%2Cwebpage-shortcuts%2Ctab-window-shortcuts
 
+
+NOTE COMMANDS ARE VERY SPECIFIC AND ARE LISTED BELOW:
 
 POSSIBLE FUNCTIONALITY
 -----------------------------
 
-Open/Close
-Uninstalling/Changing Applications
-Switching between open Applications
-Viewing Open Applications
-Type
-Press
+Open/Closing applications
+Uninstalling/Changing applications
+Switching between open applications
+Viewing open applications
+Typing
+Pressing keys
 
 
 POSSIBLE COMMANDS
@@ -38,8 +39,11 @@ Presses for singular keys
   press a four times etc.)
   
 Presses for multiple keys
-  Ctrl + C
-  Ctrl + V
+  -Ctrl + C
+  -Ctrl + V
+  -Ctrl + T
+  -Ctrl + Tab
+  - MANY MORE!!!
   (e.g. press control and v for paste) <-- has to be said similar to this because input can't detect single letters for some reason
   
 -------------------------------
@@ -56,11 +60,14 @@ Uninstall/Change applications
 
 Switching between open applications
    - "Switch application" (e.g. Switch application press left three times)
+   - NOTE: using right is a little bit finicky given write and right are said the same, program can correct it most of the time.
    
 -------------------------------
 
 Viewing open applications
-   - "View open applications" (e.g. View open application)
+   - "View open applications" (e.g. View open applications)
+   - To exit view just say press esc one time
+   - Can also use this to change between open applications as well
    
 -------------------------------
 
